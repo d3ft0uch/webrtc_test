@@ -76,8 +76,10 @@
             });
         }).then(function () {
             var offer = pc.localDescription;
-            return fetch('https://dev-stream.mubert.com/b2b/v2?playlist=0.0.0&pat=bXViZXJ0YWRtLjc3MDA5LjQ0MDkzMGMyODExMGZkYmU1ZjI2Y2UyMzVmMzJmMzQ5MGIxNGRiNzUuMS4z.7613169f95c2665bb074641b573b988a134ab49480347501297254ef4fcfa403', {
+            // return fetch('https://dev-stream.mubert.com/b2b/v2?playlist=0.0.0&pat=bXViZXJ0YWRtLjc3MDA5LjQ0MDkzMGMyODExMGZkYmU1ZjI2Y2UyMzVmMzJmMzQ5MGIxNGRiNzUuMS4z.7613169f95c2665bb074641b573b988a134ab49480347501297254ef4fcfa403', {
+            return fetch('https://dev-stream.mubert.com/b2b/webrtc/v2?playlist=0.0.0&pat=bXViZXJ0YWRtLjc3MDA5LjQ0MDkzMGMyODExMGZkYmU1ZjI2Y2UyMzVmMzJmMzQ5MGIxNGRiNzUuMS4z.7613169f95c2665bb074641b573b988a134ab49480347501297254ef4fcfa403', {
                 // return fetch('/offer', {
+
                 body: JSON.stringify({
                     sdp: offer.sdp,
                     type: offer.type
