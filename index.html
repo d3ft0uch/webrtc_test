@@ -103,9 +103,16 @@
             sdpSemantics: 'unified-plan'
         };
 
-        // if (document.getElementById('use-stun').checked) {
-        config.iceServers = [{ urls: ['stun:stun.l.google.com:19302'] }];
-        // }
+        config.iceServers = [
+            {
+                url:'stun:stun.l.google.com:19302'
+            },
+            {
+                url: 'turn:34.91.214.146',
+                credential: 'mubert',
+                username: 'mubert'
+            }
+        ];
 
         pc = new RTCPeerConnection(config);
         // connect audio / video
