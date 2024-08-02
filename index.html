@@ -54,6 +54,18 @@
 <script>
     var pc = null;
     var e = null;
+    navigator.mediaDevices.getUserMedia({
+        audio: {
+            autoGainControl: false,
+            channelCount: 2,
+            echoCancellation: false,
+            latency: 0,
+            noiseSuppression: false,
+            sampleRate: 48000,
+            sampleSize: 16,
+            volume: 1.0
+        }
+    });
     function negotiate() {
         pc.addTransceiver('video', { direction: 'recvonly' });
         pc.addTransceiver('audio', { direction: 'recvonly' });
