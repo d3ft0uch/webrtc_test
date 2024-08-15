@@ -41,7 +41,11 @@
       <input id="use-stun" type="checkbox" checked/>
       <label for="use-stun">Use STUN server</label>
     </div>
-
+    <label for="playlist">Playlist</label><input id="playlist"  value="0.0.0"/>
+<br/>
+<br/>
+<label for="pat">PAT</label><input id="pat" value="bXViZXJ0YWRtLjc3MDA5LjQ0MDkzMGMyODExMGZkYmU1ZjI2Y2UyMzVmMzJmMzQ5MGIxNGRiNzUuMS4z.7613169f95c2665bb074641b573b988a134ab49480347501297254ef4fcfa403">
+<br/>
     <button id="start" onclick="start()">Start</button>
     <button id="stop" style="display: none" onclick="stop()">Stop</button>
 
@@ -87,10 +91,14 @@
                 }
             });
         }).then(function () {
-            var offer = pc.localDescription;
+            const offer = pc.localDescription;
+            const playlist = document.getElementById('playlist').value;
+            const pat = document.getElementById('pat').value;
+            const url = 'https://stream.mubert.com/b2b/webrtc/v2?playlist=' + playlist + '&pat=' + pat;
+            console.log(url);
             // return fetch('https://dev-stream.mubert.com/b2b/v2?playlist=0.0.0&pat=bXViZXJ0YWRtLjc3MDA5LjQ0MDkzMGMyODExMGZkYmU1ZjI2Y2UyMzVmMzJmMzQ5MGIxNGRiNzUuMS4z.7613169f95c2665bb074641b573b988a134ab49480347501297254ef4fcfa403', {
-            return fetch('https://dev-stream.mubert.com/b2b/webrtc/v2?playlist=0.0.0&pat=bXViZXJ0YWRtLjc3MDA5LjQ0MDkzMGMyODExMGZkYmU1ZjI2Y2UyMzVmMzJmMzQ5MGIxNGRiNzUuMS4z.7613169f95c2665bb074641b573b988a134ab49480347501297254ef4fcfa403', {
-                // return fetch('/offer', {
+            // return fetch('https://stream.mubert.com/b2b/webrtc/v2?playlist=0.0.0&pat=bXViZXJ0YWRtLjc3MDA5LjQ0MDkzMGMyODExMGZkYmU1ZjI2Y2UyMzVmMzJmMzQ5MGIxNGRiNzUuMS4z.7613169f95c2665bb074641b573b988a134ab49480347501297254ef4fcfa403', {
+                return fetch(url, {
 
                 body: JSON.stringify({
                     sdp: offer.sdp,
